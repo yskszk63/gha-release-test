@@ -21,3 +21,4 @@ jobs:
       - run: gh release upload '${{ github.event.release.tag_name }}' /etc/hosts /etc/os-release --repo '${{ github.event.repository.full_name }}'
         env:
           GH_TOKEN: ${{ github.token }}
+      - run: echo $GITHUB_REF
