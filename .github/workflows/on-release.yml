@@ -4,15 +4,18 @@ on:
   release:
     types:
       - published
-      - unpublished
-      - created
-      - edited
-      - deleted
-      - prereleased
-      - released
+#     - unpublished
+#     - created
+#     - edited
+#     - deleted
+#     - prereleased
+#     - released
 
 jobs:
   dosomething:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - run: echo '${{ toJSON(github.event) }}'
+      - run: gh release upload '${{ github.event.release.tag_name }}' /etc/hosts /etc/os-release
